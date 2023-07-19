@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DashboardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="adm_Module">
+    <Key>
+      <PropertyRef Name="idModule" />
+    </Key>
+    <Property Name="idModule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameModule" Type="varchar" MaxLength="100" />
+    <Property Name="descriptionModule" Type="varchar" MaxLength="200" />
+    <Property Name="pathModule" Type="varchar" MaxLength="300" />
+    <Property Name="orderModule" Type="int" />
+    <Property Name="idModelFather" Type="int" />
+    <Property Name="active" Type="bit" />
+    <Property Name="create_date" Type="smalldatetime" />
+    <Property Name="update_date" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="adm_Rol">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameRol" Type="varchar" MaxLength="100" />
+    <Property Name="active" Type="bit" />
+    <Property Name="create_date" Type="smalldatetime" />
+    <Property Name="update_date" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="adm_RolModule">
+    <Key>
+      <PropertyRef Name="idRolModule" />
+    </Key>
+    <Property Name="idRolModule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRol" Type="int" Nullable="false" />
+    <Property Name="idModule" Type="int" Nullable="false" />
+    <Property Name="active" Type="bit" />
+    <Property Name="create_date" Type="smalldatetime" />
+    <Property Name="update_date" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="adm_RolUser">
+    <Key>
+      <PropertyRef Name="idRolUser" />
+    </Key>
+    <Property Name="idRolUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRol" Type="int" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="active" Type="bit" />
+    <Property Name="create_date" Type="smalldatetime" />
+    <Property Name="update_date" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="adm_User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aliasUser" Type="varchar" MaxLength="100" />
+    <Property Name="passwordUser" Type="varchar" MaxLength="10" />
+    <Property Name="nameUser" Type="varchar" MaxLength="100" />
+    <Property Name="firstNameUser" Type="varchar" MaxLength="100" />
+    <Property Name="secondNameUser" Type="varchar" MaxLength="100" />
+    <Property Name="addressUser" Type="varchar" MaxLength="200" />
+    <Property Name="CPUser" Type="varchar" MaxLength="200" />
+    <Property Name="telephoneUser" Type="bigint" />
+    <Property Name="emailUser" Type="varchar" MaxLength="200" />
+    <Property Name="active" Type="bit" />
+    <Property Name="create_date" Type="smalldatetime" />
+    <Property Name="update_date" Type="smalldatetime" />
+  </EntityType>
+  <Association Name="FK__adm_RolMo__idMod__2F10007B">
+    <End Role="adm_Module" Type="Self.adm_Module" Multiplicity="1" />
+    <End Role="adm_RolModule" Type="Self.adm_RolModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adm_Module">
+        <PropertyRef Name="idModule" />
+      </Principal>
+      <Dependent Role="adm_RolModule">
+        <PropertyRef Name="idModule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__adm_RolMo__idRol__2E1BDC42">
+    <End Role="adm_Rol" Type="Self.adm_Rol" Multiplicity="1" />
+    <End Role="adm_RolModule" Type="Self.adm_RolModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adm_Rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="adm_RolModule">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__adm_RolUs__idRol__2A4B4B5E">
+    <End Role="adm_Rol" Type="Self.adm_Rol" Multiplicity="1" />
+    <End Role="adm_RolUser" Type="Self.adm_RolUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adm_Rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="adm_RolUser">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__adm_RolUs__idUse__2B3F6F97">
+    <End Role="adm_User" Type="Self.adm_User" Multiplicity="1" />
+    <End Role="adm_RolUser" Type="Self.adm_RolUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adm_User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="adm_RolUser">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DashboardModelStoreContainer">
+    <EntitySet Name="adm_Module" EntityType="Self.adm_Module" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="adm_Rol" EntityType="Self.adm_Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="adm_RolModule" EntityType="Self.adm_RolModule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="adm_RolUser" EntityType="Self.adm_RolUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="adm_User" EntityType="Self.adm_User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__adm_RolMo__idMod__2F10007B" Association="Self.FK__adm_RolMo__idMod__2F10007B">
+      <End Role="adm_Module" EntitySet="adm_Module" />
+      <End Role="adm_RolModule" EntitySet="adm_RolModule" />
+    </AssociationSet>
+    <AssociationSet Name="FK__adm_RolMo__idRol__2E1BDC42" Association="Self.FK__adm_RolMo__idRol__2E1BDC42">
+      <End Role="adm_Rol" EntitySet="adm_Rol" />
+      <End Role="adm_RolModule" EntitySet="adm_RolModule" />
+    </AssociationSet>
+    <AssociationSet Name="FK__adm_RolUs__idRol__2A4B4B5E" Association="Self.FK__adm_RolUs__idRol__2A4B4B5E">
+      <End Role="adm_Rol" EntitySet="adm_Rol" />
+      <End Role="adm_RolUser" EntitySet="adm_RolUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__adm_RolUs__idUse__2B3F6F97" Association="Self.FK__adm_RolUs__idUse__2B3F6F97">
+      <End Role="adm_User" EntitySet="adm_User" />
+      <End Role="adm_RolUser" EntitySet="adm_RolUser" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

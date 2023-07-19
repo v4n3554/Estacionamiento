@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DashboardModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DashboardEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="adm_Module" EntityType="DashboardModel.adm_Module" />
+    <EntitySet Name="adm_Rol" EntityType="DashboardModel.adm_Rol" />
+    <EntitySet Name="adm_RolModule" EntityType="DashboardModel.adm_RolModule" />
+    <EntitySet Name="adm_RolUser" EntityType="DashboardModel.adm_RolUser" />
+    <EntitySet Name="adm_User" EntityType="DashboardModel.adm_User" />
+    <AssociationSet Name="FK__adm_RolMo__idMod__2F10007B" Association="DashboardModel.FK__adm_RolMo__idMod__2F10007B">
+      <End Role="adm_Module" EntitySet="adm_Module" />
+      <End Role="adm_RolModule" EntitySet="adm_RolModule" />
+    </AssociationSet>
+    <AssociationSet Name="FK__adm_RolMo__idRol__2E1BDC42" Association="DashboardModel.FK__adm_RolMo__idRol__2E1BDC42">
+      <End Role="adm_Rol" EntitySet="adm_Rol" />
+      <End Role="adm_RolModule" EntitySet="adm_RolModule" />
+    </AssociationSet>
+    <AssociationSet Name="FK__adm_RolUs__idRol__2A4B4B5E" Association="DashboardModel.FK__adm_RolUs__idRol__2A4B4B5E">
+      <End Role="adm_Rol" EntitySet="adm_Rol" />
+      <End Role="adm_RolUser" EntitySet="adm_RolUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__adm_RolUs__idUse__2B3F6F97" Association="DashboardModel.FK__adm_RolUs__idUse__2B3F6F97">
+      <End Role="adm_User" EntitySet="adm_User" />
+      <End Role="adm_RolUser" EntitySet="adm_RolUser" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="adm_Module">
+    <Key>
+      <PropertyRef Name="idModule" />
+    </Key>
+    <Property Name="idModule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nameModule" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="descriptionModule" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="pathModule" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="orderModule" Type="Int32" />
+    <Property Name="idModelFather" Type="Int32" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="create_date" Type="DateTime" Precision="0" />
+    <Property Name="update_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="adm_RolModule" Relationship="DashboardModel.FK__adm_RolMo__idMod__2F10007B" FromRole="adm_Module" ToRole="adm_RolModule" />
+  </EntityType>
+  <EntityType Name="adm_Rol">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nameRol" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="create_date" Type="DateTime" Precision="0" />
+    <Property Name="update_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="adm_RolModule" Relationship="DashboardModel.FK__adm_RolMo__idRol__2E1BDC42" FromRole="adm_Rol" ToRole="adm_RolModule" />
+    <NavigationProperty Name="adm_RolUser" Relationship="DashboardModel.FK__adm_RolUs__idRol__2A4B4B5E" FromRole="adm_Rol" ToRole="adm_RolUser" />
+  </EntityType>
+  <EntityType Name="adm_RolModule">
+    <Key>
+      <PropertyRef Name="idRolModule" />
+    </Key>
+    <Property Name="idRolModule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRol" Type="Int32" Nullable="false" />
+    <Property Name="idModule" Type="Int32" Nullable="false" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="create_date" Type="DateTime" Precision="0" />
+    <Property Name="update_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="adm_Module" Relationship="DashboardModel.FK__adm_RolMo__idMod__2F10007B" FromRole="adm_RolModule" ToRole="adm_Module" />
+    <NavigationProperty Name="adm_Rol" Relationship="DashboardModel.FK__adm_RolMo__idRol__2E1BDC42" FromRole="adm_RolModule" ToRole="adm_Rol" />
+  </EntityType>
+  <EntityType Name="adm_RolUser">
+    <Key>
+      <PropertyRef Name="idRolUser" />
+    </Key>
+    <Property Name="idRolUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRol" Type="Int32" Nullable="false" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="create_date" Type="DateTime" Precision="0" />
+    <Property Name="update_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="adm_Rol" Relationship="DashboardModel.FK__adm_RolUs__idRol__2A4B4B5E" FromRole="adm_RolUser" ToRole="adm_Rol" />
+    <NavigationProperty Name="adm_User" Relationship="DashboardModel.FK__adm_RolUs__idUse__2B3F6F97" FromRole="adm_RolUser" ToRole="adm_User" />
+  </EntityType>
+  <EntityType Name="adm_User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="aliasUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="passwordUser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="nameUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="firstNameUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="secondNameUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="addressUser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CPUser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="telephoneUser" Type="Int64" />
+    <Property Name="emailUser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="create_date" Type="DateTime" Precision="0" />
+    <Property Name="update_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="adm_RolUser" Relationship="DashboardModel.FK__adm_RolUs__idUse__2B3F6F97" FromRole="adm_User" ToRole="adm_RolUser" />
+  </EntityType>
+  <Association Name="FK__adm_RolMo__idMod__2F10007B">
+    <End Type="DashboardModel.adm_Module" Role="adm_Module" Multiplicity="1" />
+    <End Type="DashboardModel.adm_RolModule" Role="adm_RolModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adm_Module">
+        <PropertyRef Name="idModule" />
+      </Principal>
+      <Dependent Role="adm_RolModule">
+        <PropertyRef Name="idModule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__adm_RolMo__idRol__2E1BDC42">
+    <End Type="DashboardModel.adm_Rol" Role="adm_Rol" Multiplicity="1" />
+    <End Type="DashboardModel.adm_RolModule" Role="adm_RolModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adm_Rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="adm_RolModule">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__adm_RolUs__idRol__2A4B4B5E">
+    <End Type="DashboardModel.adm_Rol" Role="adm_Rol" Multiplicity="1" />
+    <End Type="DashboardModel.adm_RolUser" Role="adm_RolUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adm_Rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="adm_RolUser">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__adm_RolUs__idUse__2B3F6F97">
+    <End Type="DashboardModel.adm_User" Role="adm_User" Multiplicity="1" />
+    <End Type="DashboardModel.adm_RolUser" Role="adm_RolUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adm_User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="adm_RolUser">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

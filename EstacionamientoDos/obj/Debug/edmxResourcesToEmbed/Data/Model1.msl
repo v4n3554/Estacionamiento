@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DashboardModelStoreContainer" CdmEntityContainer="DashboardEntities">
+    <EntitySetMapping Name="adm_Module">
+      <EntityTypeMapping TypeName="DashboardModel.adm_Module">
+        <MappingFragment StoreEntitySet="adm_Module">
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="idModelFather" ColumnName="idModelFather" />
+          <ScalarProperty Name="orderModule" ColumnName="orderModule" />
+          <ScalarProperty Name="pathModule" ColumnName="pathModule" />
+          <ScalarProperty Name="descriptionModule" ColumnName="descriptionModule" />
+          <ScalarProperty Name="nameModule" ColumnName="nameModule" />
+          <ScalarProperty Name="idModule" ColumnName="idModule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adm_Rol">
+      <EntityTypeMapping TypeName="DashboardModel.adm_Rol">
+        <MappingFragment StoreEntitySet="adm_Rol">
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="nameRol" ColumnName="nameRol" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adm_RolModule">
+      <EntityTypeMapping TypeName="DashboardModel.adm_RolModule">
+        <MappingFragment StoreEntitySet="adm_RolModule">
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="idModule" ColumnName="idModule" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="idRolModule" ColumnName="idRolModule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adm_RolUser">
+      <EntityTypeMapping TypeName="DashboardModel.adm_RolUser">
+        <MappingFragment StoreEntitySet="adm_RolUser">
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="idRolUser" ColumnName="idRolUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adm_User">
+      <EntityTypeMapping TypeName="DashboardModel.adm_User">
+        <MappingFragment StoreEntitySet="adm_User">
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="emailUser" ColumnName="emailUser" />
+          <ScalarProperty Name="telephoneUser" ColumnName="telephoneUser" />
+          <ScalarProperty Name="CPUser" ColumnName="CPUser" />
+          <ScalarProperty Name="addressUser" ColumnName="addressUser" />
+          <ScalarProperty Name="secondNameUser" ColumnName="secondNameUser" />
+          <ScalarProperty Name="firstNameUser" ColumnName="firstNameUser" />
+          <ScalarProperty Name="nameUser" ColumnName="nameUser" />
+          <ScalarProperty Name="passwordUser" ColumnName="passwordUser" />
+          <ScalarProperty Name="aliasUser" ColumnName="aliasUser" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DashboardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adm_Module">
+          <Key>
+            <PropertyRef Name="idModule" />
+          </Key>
+          <Property Name="idModule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameModule" Type="varchar" MaxLength="100" />
+          <Property Name="descriptionModule" Type="varchar" MaxLength="200" />
+          <Property Name="pathModule" Type="varchar" MaxLength="300" />
+          <Property Name="orderModule" Type="int" />
+          <Property Name="idModelFather" Type="int" />
+          <Property Name="active" Type="bit" />
+          <Property Name="create_date" Type="smalldatetime" />
+          <Property Name="update_date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="adm_Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameRol" Type="varchar" MaxLength="100" />
+          <Property Name="active" Type="bit" />
+          <Property Name="create_date" Type="smalldatetime" />
+          <Property Name="update_date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="adm_RolModule">
+          <Key>
+            <PropertyRef Name="idRolModule" />
+          </Key>
+          <Property Name="idRolModule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="idModule" Type="int" Nullable="false" />
+          <Property Name="active" Type="bit" />
+          <Property Name="create_date" Type="smalldatetime" />
+          <Property Name="update_date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="adm_RolUser">
+          <Key>
+            <PropertyRef Name="idRolUser" />
+          </Key>
+          <Property Name="idRolUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="active" Type="bit" />
+          <Property Name="create_date" Type="smalldatetime" />
+          <Property Name="update_date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="adm_User">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aliasUser" Type="varchar" MaxLength="100" />
+          <Property Name="passwordUser" Type="varchar" MaxLength="10" />
+          <Property Name="nameUser" Type="varchar" MaxLength="100" />
+          <Property Name="firstNameUser" Type="varchar" MaxLength="100" />
+          <Property Name="secondNameUser" Type="varchar" MaxLength="100" />
+          <Property Name="addressUser" Type="varchar" MaxLength="200" />
+          <Property Name="CPUser" Type="varchar" MaxLength="200" />
+          <Property Name="telephoneUser" Type="bigint" />
+          <Property Name="emailUser" Type="varchar" MaxLength="200" />
+          <Property Name="active" Type="bit" />
+          <Property Name="create_date" Type="smalldatetime" />
+          <Property Name="update_date" Type="smalldatetime" />
+        </EntityType>
+        <Association Name="FK__adm_RolMo__idMod__2F10007B">
+          <End Role="adm_Module" Type="Self.adm_Module" Multiplicity="1" />
+          <End Role="adm_RolModule" Type="Self.adm_RolModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_Module">
+              <PropertyRef Name="idModule" />
+            </Principal>
+            <Dependent Role="adm_RolModule">
+              <PropertyRef Name="idModule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adm_RolMo__idRol__2E1BDC42">
+          <End Role="adm_Rol" Type="Self.adm_Rol" Multiplicity="1" />
+          <End Role="adm_RolModule" Type="Self.adm_RolModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="adm_RolModule">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adm_RolUs__idRol__2A4B4B5E">
+          <End Role="adm_Rol" Type="Self.adm_Rol" Multiplicity="1" />
+          <End Role="adm_RolUser" Type="Self.adm_RolUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="adm_RolUser">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adm_RolUs__idUse__2B3F6F97">
+          <End Role="adm_User" Type="Self.adm_User" Multiplicity="1" />
+          <End Role="adm_RolUser" Type="Self.adm_RolUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_User">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="adm_RolUser">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DashboardModelStoreContainer">
+          <EntitySet Name="adm_Module" EntityType="Self.adm_Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_Rol" EntityType="Self.adm_Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_RolModule" EntityType="Self.adm_RolModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_RolUser" EntityType="Self.adm_RolUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adm_User" EntityType="Self.adm_User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__adm_RolMo__idMod__2F10007B" Association="Self.FK__adm_RolMo__idMod__2F10007B">
+            <End Role="adm_Module" EntitySet="adm_Module" />
+            <End Role="adm_RolModule" EntitySet="adm_RolModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adm_RolMo__idRol__2E1BDC42" Association="Self.FK__adm_RolMo__idRol__2E1BDC42">
+            <End Role="adm_Rol" EntitySet="adm_Rol" />
+            <End Role="adm_RolModule" EntitySet="adm_RolModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adm_RolUs__idRol__2A4B4B5E" Association="Self.FK__adm_RolUs__idRol__2A4B4B5E">
+            <End Role="adm_Rol" EntitySet="adm_Rol" />
+            <End Role="adm_RolUser" EntitySet="adm_RolUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adm_RolUs__idUse__2B3F6F97" Association="Self.FK__adm_RolUs__idUse__2B3F6F97">
+            <End Role="adm_User" EntitySet="adm_User" />
+            <End Role="adm_RolUser" EntitySet="adm_RolUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DashboardModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DashboardEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adm_Module" EntityType="DashboardModel.adm_Module" />
+          <EntitySet Name="adm_Rol" EntityType="DashboardModel.adm_Rol" />
+          <EntitySet Name="adm_RolModule" EntityType="DashboardModel.adm_RolModule" />
+          <EntitySet Name="adm_RolUser" EntityType="DashboardModel.adm_RolUser" />
+          <EntitySet Name="adm_User" EntityType="DashboardModel.adm_User" />
+          <AssociationSet Name="FK__adm_RolMo__idMod__2F10007B" Association="DashboardModel.FK__adm_RolMo__idMod__2F10007B">
+            <End Role="adm_Module" EntitySet="adm_Module" />
+            <End Role="adm_RolModule" EntitySet="adm_RolModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adm_RolMo__idRol__2E1BDC42" Association="DashboardModel.FK__adm_RolMo__idRol__2E1BDC42">
+            <End Role="adm_Rol" EntitySet="adm_Rol" />
+            <End Role="adm_RolModule" EntitySet="adm_RolModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adm_RolUs__idRol__2A4B4B5E" Association="DashboardModel.FK__adm_RolUs__idRol__2A4B4B5E">
+            <End Role="adm_Rol" EntitySet="adm_Rol" />
+            <End Role="adm_RolUser" EntitySet="adm_RolUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__adm_RolUs__idUse__2B3F6F97" Association="DashboardModel.FK__adm_RolUs__idUse__2B3F6F97">
+            <End Role="adm_User" EntitySet="adm_User" />
+            <End Role="adm_RolUser" EntitySet="adm_RolUser" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="adm_Module">
+          <Key>
+            <PropertyRef Name="idModule" />
+          </Key>
+          <Property Name="idModule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameModule" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descriptionModule" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="pathModule" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="orderModule" Type="Int32" />
+          <Property Name="idModelFather" Type="Int32" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="adm_RolModule" Relationship="DashboardModel.FK__adm_RolMo__idMod__2F10007B" FromRole="adm_Module" ToRole="adm_RolModule" />
+        </EntityType>
+        <EntityType Name="adm_Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameRol" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="adm_RolModule" Relationship="DashboardModel.FK__adm_RolMo__idRol__2E1BDC42" FromRole="adm_Rol" ToRole="adm_RolModule" />
+          <NavigationProperty Name="adm_RolUser" Relationship="DashboardModel.FK__adm_RolUs__idRol__2A4B4B5E" FromRole="adm_Rol" ToRole="adm_RolUser" />
+        </EntityType>
+        <EntityType Name="adm_RolModule">
+          <Key>
+            <PropertyRef Name="idRolModule" />
+          </Key>
+          <Property Name="idRolModule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="idModule" Type="Int32" Nullable="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="adm_Module" Relationship="DashboardModel.FK__adm_RolMo__idMod__2F10007B" FromRole="adm_RolModule" ToRole="adm_Module" />
+          <NavigationProperty Name="adm_Rol" Relationship="DashboardModel.FK__adm_RolMo__idRol__2E1BDC42" FromRole="adm_RolModule" ToRole="adm_Rol" />
+        </EntityType>
+        <EntityType Name="adm_RolUser">
+          <Key>
+            <PropertyRef Name="idRolUser" />
+          </Key>
+          <Property Name="idRolUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="adm_Rol" Relationship="DashboardModel.FK__adm_RolUs__idRol__2A4B4B5E" FromRole="adm_RolUser" ToRole="adm_Rol" />
+          <NavigationProperty Name="adm_User" Relationship="DashboardModel.FK__adm_RolUs__idUse__2B3F6F97" FromRole="adm_RolUser" ToRole="adm_User" />
+        </EntityType>
+        <EntityType Name="adm_User">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aliasUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="passwordUser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="nameUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="firstNameUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="secondNameUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="addressUser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CPUser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="telephoneUser" Type="Int64" />
+          <Property Name="emailUser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="create_date" Type="DateTime" Precision="0" />
+          <Property Name="update_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="adm_RolUser" Relationship="DashboardModel.FK__adm_RolUs__idUse__2B3F6F97" FromRole="adm_User" ToRole="adm_RolUser" />
+        </EntityType>
+        <Association Name="FK__adm_RolMo__idMod__2F10007B">
+          <End Type="DashboardModel.adm_Module" Role="adm_Module" Multiplicity="1" />
+          <End Type="DashboardModel.adm_RolModule" Role="adm_RolModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_Module">
+              <PropertyRef Name="idModule" />
+            </Principal>
+            <Dependent Role="adm_RolModule">
+              <PropertyRef Name="idModule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adm_RolMo__idRol__2E1BDC42">
+          <End Type="DashboardModel.adm_Rol" Role="adm_Rol" Multiplicity="1" />
+          <End Type="DashboardModel.adm_RolModule" Role="adm_RolModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="adm_RolModule">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adm_RolUs__idRol__2A4B4B5E">
+          <End Type="DashboardModel.adm_Rol" Role="adm_Rol" Multiplicity="1" />
+          <End Type="DashboardModel.adm_RolUser" Role="adm_RolUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="adm_RolUser">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__adm_RolUs__idUse__2B3F6F97">
+          <End Type="DashboardModel.adm_User" Role="adm_User" Multiplicity="1" />
+          <End Type="DashboardModel.adm_RolUser" Role="adm_RolUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_User">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="adm_RolUser">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DashboardModelStoreContainer" CdmEntityContainer="DashboardEntities">
+          <EntitySetMapping Name="adm_Module">
+            <EntityTypeMapping TypeName="DashboardModel.adm_Module">
+              <MappingFragment StoreEntitySet="adm_Module">
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="idModelFather" ColumnName="idModelFather" />
+                <ScalarProperty Name="orderModule" ColumnName="orderModule" />
+                <ScalarProperty Name="pathModule" ColumnName="pathModule" />
+                <ScalarProperty Name="descriptionModule" ColumnName="descriptionModule" />
+                <ScalarProperty Name="nameModule" ColumnName="nameModule" />
+                <ScalarProperty Name="idModule" ColumnName="idModule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adm_Rol">
+            <EntityTypeMapping TypeName="DashboardModel.adm_Rol">
+              <MappingFragment StoreEntitySet="adm_Rol">
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="nameRol" ColumnName="nameRol" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adm_RolModule">
+            <EntityTypeMapping TypeName="DashboardModel.adm_RolModule">
+              <MappingFragment StoreEntitySet="adm_RolModule">
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="idModule" ColumnName="idModule" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="idRolModule" ColumnName="idRolModule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adm_RolUser">
+            <EntityTypeMapping TypeName="DashboardModel.adm_RolUser">
+              <MappingFragment StoreEntitySet="adm_RolUser">
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="idRolUser" ColumnName="idRolUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adm_User">
+            <EntityTypeMapping TypeName="DashboardModel.adm_User">
+              <MappingFragment StoreEntitySet="adm_User">
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="emailUser" ColumnName="emailUser" />
+                <ScalarProperty Name="telephoneUser" ColumnName="telephoneUser" />
+                <ScalarProperty Name="CPUser" ColumnName="CPUser" />
+                <ScalarProperty Name="addressUser" ColumnName="addressUser" />
+                <ScalarProperty Name="secondNameUser" ColumnName="secondNameUser" />
+                <ScalarProperty Name="firstNameUser" ColumnName="firstNameUser" />
+                <ScalarProperty Name="nameUser" ColumnName="nameUser" />
+                <ScalarProperty Name="passwordUser" ColumnName="passwordUser" />
+                <ScalarProperty Name="aliasUser" ColumnName="aliasUser" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,289 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="EstacionamientoDos.MasterPage.Admin.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+    <link href="../../Style/navbar-static.css" rel="stylesheet">
+
+
+    <link rel="icon" type="image/png" href="../../Style/Login/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <%--<link rel="stylesheet" type="text/css" href="../../Style/Login/vendor/bootstrap/css/bootstrap.min.css">--%>
+    <link rel="stylesheet" type="text/css" href="../../Style/Login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../Style/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../Style/Login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../Style/Login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../Style/Login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../Style/Login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="../../Style/Login/css/main.css">
+    <!--===============================================================================================-->
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+            .nav-scroller .nav {
+                display: flex;
+                flex-wrap: nowrap;
+                padding-bottom: 1rem;
+                margin-top: -1px;
+                overflow-x: auto;
+                text-align: center;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+        .btn-bd-primary {
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: var(--bd-violet-bg);
+            --bs-btn-border-color: var(--bd-violet-bg);
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
+            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+            z-index: 1500;
+        }
+
+        .mppBkLoad {
+            background-color: Gray;
+            filter: alpha(opacity=70);
+            opacity: 0.7;
+        }
+
+        .mppLoad {
+            background-color: rgba(255, 255, 255, 0);
+            border-width: 0px;
+            border-style: solid;
+            border-color: ThreeDShadow;
+            padding: 0px;
+            text-align: center;
+        }
+
+        /* .ddlsize12 {
+            position: relative;
+            min-height: 1px;
+            padding-right: 0px;
+            padding-left: 0px;
+        }*/
+    </style>
+
+
+
+</head>
+<body>
+    <div>
+        <form id="frmIncValRep" runat="server">
+            <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true" AsyncPostBackTimeout="600"
+                ScriptMode="Auto" AsyncPostBackErrorMessage="Error en Ajax" LoadScriptsBeforeUI="true" EnablePartialRendering="true" EnablePageMethods="true">
+            </asp:ScriptManager>
+
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="check2" viewBox="0 0 16 16">
+                    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                </symbol>
+                <symbol id="circle-half" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                </symbol>
+                <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+                    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+                    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+                </symbol>
+                <symbol id="sun-fill" viewBox="0 0 16 16">
+                    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+                </symbol>
+            </svg>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row bg-dark">
+                        <div class="col-md-7">
+                            <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" runat="server">
+                                <div class="container text-center" runat="server">
+                                    <div class="row" runat="server" id="divMenus">
+                                        <%--<div class="col-md-4">
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Catalogos
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item"  href="../../Views/Catalogs/User.aspx">Usuarios</a></li>
+                                                    <li><a class="dropdown-item" href="../../Views/Catalogs/Rol.aspx">Roles</a></li>
+                                                    <li><a class="dropdown-item" href="../../Views/Catalogs/Module.aspx">Modulos</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>--%>
+                                        <%--<div class="col-md-3">
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Reportes
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="../../Views/Report/ReporteEstacionamiento.aspx">Estacionamiento</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>--%>
+                                       <%-- <div class="col-md-5">
+
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Configuracion
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="../../Views/Configuration/RolUser.aspx">Rol/Usuario</a></li>
+                                                    <li><a class="dropdown-item" href="../../Views/Configuration/RolModule.aspx">Rol/Permisos</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>--%>
+
+
+                                    </div>
+
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="container text-right" runat="server">
+                                <asp:Label runat="server" ID="lblNombreUser" ForeColor="White"></asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="container text-center" runat="server">
+                                <asp:Button runat="server" Text="Salir" ID="btnSalir" OnClick="btnSalir_Click" CssClass="btn btn-outline-danger" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+
+            <main class="container" runat="server">
+
+                <section class="content">
+                    <div class="container-fluid">
+                        <asp:Panel ID="pnlMainContent" runat="server">
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+
+                            <!-- Modal -->
+                            <asp:UpdatePanel ID="uppnlModalmenVal" runat="server" UpdateMode="Always">
+                                <ContentTemplate>
+                                    <asp:Button ID="btnMensajeMaster" runat="server" Text="Cancelar Modal" Style="display: none;" />
+                                    <ajaxToolkit:ModalPopupExtender ID="mpeMensajeMaster" runat="server" TargetControlID="btnMensajeMaster" OkControlID="btnAceptarMensajeMaster"
+                                        PopupControlID="pnlMensajeMaster" EnableViewState="true" BackgroundCssClass="mppBkLoad" BehaviorID="mpeMensajeMaster">
+                                    </ajaxToolkit:ModalPopupExtender>
+                                    <asp:Panel ID="pnlMensajeMaster" runat="server" CssClass="mppLoad" Style="display: none;">
+
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="text-align: left;">
+                                                    <asp:Label ID="lblTituloMensajeMaster" runat="server" Text="Se encontraron coincidencias en la busqueda"
+                                                        CssClass="modal-title" Style="font-size: 20px; font-weight: bold; color: #47658d;" />
+                                                </div>
+                                                <div class="modal-body" style="text-align: left;">
+                                                    <asp:Label ID="lblMensajeMaster" runat="server" Text=""
+                                                        Style="font-size: 18px; color: #47658d;" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <asp:Button ID="btnAceptarMensajeMaster" runat="server" Text="Aceptar" CssClass="btn btn-primary btn-lg" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </asp:Panel>
+
+                                    <asp:Button ID="btnCancelModal" runat="server" Text="Cancelar Modal" Style="display: none;" />
+                                    <ajaxToolkit:ModalPopupExtender ID="PleaseWaitPopup" runat="server" TargetControlID="btnCancelModal"
+                                        PopupControlID="pnlProcesando" EnableViewState="true" BackgroundCssClass="mppBkLoad" BehaviorID="PleaseWaitPopup">
+                                    </ajaxToolkit:ModalPopupExtender>
+
+                                    <asp:Panel ID="pnlProcesando" runat="server" Height="100px" Width="250px" CssClass="alert"
+                                        Style="border-radius: 15px; border-color: #bce8f1; background-color: #FFFFFF; box-shadow: 10px 10px 5px #888888; padding-left: 5px; padding-right: 5px; padding-top: 20px; padding-bottom: 10px; display: none; display: none;">
+                                        <div class="container-fluid">
+                                            <h4 style="color: #47658d; text-align: left; text-shadow: 0.1em 0.1em #CCCCCC;">Procesando...</h4>
+                                            <div class="progress progress-striped active">
+                                                <div role="progressbar" aria-valuetransitiongoal="100" class="progress-bar progress-bar-info" aria-valuenow="100" style="width: 100%;"></div>
+                                            </div>
+                                        </div>
+                                    </asp:Panel>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+
+
+
+                        </asp:Panel>
+                    </div>
+                </section>
+
+            </main>
+        </form>
+    </div>
+
+    <script src="../../Scripts/jquery-3.7.0.min.js"></script>
+</body>
+</html>
