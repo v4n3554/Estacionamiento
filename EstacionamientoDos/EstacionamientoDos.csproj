@@ -1882,11 +1882,16 @@
   <ItemGroup>
     <Compile Include="BLL\LoginBll.cs" />
     <Compile Include="BLL\ModuleBll.cs" />
+    <Compile Include="BLL\ReporteEstacionamientoBll.cs" />
     <Compile Include="BLL\RolBll.cs" />
     <Compile Include="BLL\RolModuleBll.cs" />
     <Compile Include="BLL\RolUserBll.cs" />
     <Compile Include="BLL\UserBll.cs" />
+    <Compile Include="Data\report_data.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\RptEstacionamientoModel.cs" />
+    <Compile Include="Model\RptEstacionamientoRequestModel.cs" />
     <Compile Include="Views\Catalogs\Module.aspx.cs">
       <DependentUpon>Module.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

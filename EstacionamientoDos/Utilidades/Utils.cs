@@ -28,5 +28,35 @@ namespace EstacionamientoDos.Utilidades
 
 
         }
+
+
+        public static string GetDayOfWeekSpanish(DayOfWeek nombre) {
+            string cadena = string.Empty;
+            switch (nombre){
+                case DayOfWeek.Sunday:
+                    cadena="Domingo";
+                    break;
+                case DayOfWeek.Monday:
+                    cadena = "Lunes";
+                    break;
+                case DayOfWeek.Tuesday:
+                    cadena = "Martes";
+                    break;
+                case DayOfWeek.Wednesday:
+                    cadena = "Miercoles";
+                    break;
+                case DayOfWeek.Thursday:
+                    cadena = "Jueves";
+                    break;
+                case DayOfWeek.Friday:
+                    cadena = "Viernes";
+                    break;
+                case DayOfWeek.Saturday:
+                    cadena = "Sabado";
+                    break;
+            }
+            return cadena;
+            
+        }
     }
 }

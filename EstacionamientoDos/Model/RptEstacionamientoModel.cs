@@ -11,11 +11,13 @@ namespace EstacionamientoDos.Model
 
         public string diaSemanaNum { get; set; }
 
-        public int ingresadas { get; set; }
+        public long ingresadas { get; set; }
 
         public int horas { get; set; }
         public decimal efectivo { get; set; }
 
         public decimal tpv { get; set; }
+
+        public string Nombre { get; set; }
     }
 }
