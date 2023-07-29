@@ -8,13 +8,13 @@
             <ContentTemplate>
                 <div class="row">
                     <div class="col-md-3">
-                        <asp:Button runat="server" CssClass="btn btn-primary" Text="Buscar" ID="btnBuscar" ValidationGroup="ValidationReportEstac" OnClick="btnBuscar_Click" />
+                        <asp:Button runat="server" CssClass="btn btn-primary" Text="Buscar" ID="btnBuscar"  OnClick="btnBuscar_Click" />
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-md-3">
-                        <span>Fecha Inicio*</span>
+                        <asp:Label runat="server" ID="lblFechaIni">Fecha Inicio*</asp:Label>
                         <div class="form-group">
                             <div class="input-icon right">
                                 <asp:TextBox ID="txtFechaInicio" runat="server" placeholder="Fecha dd/MM/yyyy" CssClass="form-control" ToolTip="Fecha"></asp:TextBox>
@@ -22,13 +22,13 @@
                                     PopupButtonID="txtBusFechaOperacion" CssClass="cal_Theme1" />
                             </div>
                         </div>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtFechaInicio"
+                       <%-- <asp:RequiredFieldValidator runat="server" ControlToValidate="txtFechaInicio"
                             ValidationGroup="ValidationReportEstac"
                             ErrorMessage="Campo Requerido"
-                            CssClass="alert alert-danger" Font-Size="9"></asp:RequiredFieldValidator>
+                            CssClass="alert alert-danger" Font-Size="9"></asp:RequiredFieldValidator>--%>
                     </div>
                     <div class="col-md-3">
-                        <span>Fecha Fin*</span>
+                        <asp:Label runat="server" ID="lblFechaFin">Fecha Fin*</asp:Label>
                         <div class="form-group">
                             <div class="input-icon right">
                                 <asp:TextBox ID="txtFechaFin" runat="server" placeholder="Fecha dd/MM/yyyy" CssClass="form-control" ToolTip="Fecha"></asp:TextBox>
@@ -36,15 +36,15 @@
                                     PopupButtonID="txtBusFechaOperacion" CssClass="cal_Theme1" />
                             </div>
                         </div>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtFechaFin"
+                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="txtFechaFin"
                             ValidationGroup="ValidationReportEstac"
                             ErrorMessage="Campo Requerido"
-                            CssClass="alert alert-danger" Font-Size="9"></asp:RequiredFieldValidator>
+                            CssClass="alert alert-danger" Font-Size="9"></asp:RequiredFieldValidator>--%>
                     </div>
                     <div class="col-md-3">
                         <span>Tipo de Reporte*</span>
                         <div class="form-group" >
-                            <asp:DropDownList Width="200px" runat="server" ID="ddlTypeReport" CssClass="btn btn-secondary dropdown-toggle">
+                            <asp:DropDownList Width="200px" runat="server" ID="ddlTypeReport" CssClass="btn btn-secondary dropdown-toggle" AutoPostBack="true" OnSelectedIndexChanged="ddlTypeReport_SelectedIndexChanged">
                                 <asp:ListItem Text="Todos" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Por día" Value="1"></asp:ListItem>
                             </asp:DropDownList>

@@ -7,9 +7,9 @@ namespace EstacionamientoDos.Model
 {
     public class RptEstacionamientoRequestModel
     {
-        public DateTime fechaInicio { get; set; }
+        public DateTime? fechaInicio { get; set; }
 
-        public DateTime fechaFin { get; set; }
+        public DateTime? fechaFin { get; set; }
 
     }
 }

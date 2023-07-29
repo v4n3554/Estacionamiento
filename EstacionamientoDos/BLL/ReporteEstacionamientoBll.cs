@@ -16,9 +16,18 @@ namespace EstacionamientoDos.BLL
             var regreso = new  List<report_data>();
             try
             {
-                if (objreporte.fechaInicio != null && objreporte.fechaFin != null) {
+                if (objreporte.fechaInicio != DateTime.MinValue && objreporte.fechaFin != DateTime.MinValue) {
                     regreso = _dbo.report_data.Where(x => x.fecha >= objreporte.fechaInicio && x.fecha <= objreporte.fechaFin).ToList();
-                }else
+                
+                }
+                else if (objreporte.fechaInicio != DateTime.MinValue) {
+                    regreso = _dbo.report_data.Where(x => x.fecha >= objreporte.fechaInicio ).ToList();
+                }
+                else if (objreporte.fechaFin != DateTime.MinValue)
+                {
+                    regreso = _dbo.report_data.Where(x => x.fecha <= objreporte.fechaFin).ToList();
+                }
+                else
                     regreso = _dbo.report_data.ToList();
 
 

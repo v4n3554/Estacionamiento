@@ -1892,6 +1892,7 @@
     </Compile>
     <Compile Include="Model\RptEstacionamientoModel.cs" />
     <Compile Include="Model\RptEstacionamientoRequestModel.cs" />
+    <Compile Include="Model\RptEstacionamientoTotalesModel.cs" />
     <Compile Include="Views\Catalogs\Module.aspx.cs">
       <DependentUpon>Module.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

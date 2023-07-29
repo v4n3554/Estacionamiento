@@ -9,6 +9,8 @@ namespace EstacionamientoDos.Model
     {
         public string diaSemanatxt { get; set; }
 
+        public DateTime fecha { get; set; }
+
         public string diaSemanaNum { get; set; }
 
         public long ingresadas { get; set; }
