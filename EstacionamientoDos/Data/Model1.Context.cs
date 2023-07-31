@@ -30,5 +30,6 @@ namespace EstacionamientoDos.Data
         public virtual DbSet<adm_RolModule> adm_RolModule { get; set; }
         public virtual DbSet<adm_RolUser> adm_RolUser { get; set; }
         public virtual DbSet<adm_User> adm_User { get; set; }
+        public virtual DbSet<report_data> report_data { get; set; }
     }
 }
